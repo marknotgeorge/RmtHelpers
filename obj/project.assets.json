@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Johnson\\Documents\\MyCode\\ProntoToRmtItem\\ProntoToRmtItem.csproj",
+      "projectUniqueName": "C:\\Users\\Johnson\\Documents\\MyCode\\RmtItemHelpers\\ProntoToRmtItem.csproj",
       "projectName": "ProntoToRmtItem",
-      "projectPath": "C:\\Users\\Johnson\\Documents\\MyCode\\ProntoToRmtItem\\ProntoToRmtItem.csproj",
+      "projectPath": "C:\\Users\\Johnson\\Documents\\MyCode\\RmtItemHelpers\\ProntoToRmtItem.csproj",
       "packagesPath": "C:\\Users\\Johnson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Johnson\\Documents\\MyCode\\ProntoToRmtItem\\obj\\",
+      "outputPath": "C:\\Users\\Johnson\\Documents\\MyCode\\RmtItemHelpers\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -734,10 +734,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

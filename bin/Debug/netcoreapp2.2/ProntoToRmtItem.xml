@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProntoToRmtItem</name>
+    </assembly>
+    <members>
+        <member name="F:nanoFramework.Hardware.Esp32.Rmt.RmtChannelOpenStatus.ChannelUnavailable">
+            <summary>
+            The channel is already in use.
+            </summary>
+        </member>
+        <member name="F:nanoFramework.Hardware.Esp32.Rmt.RmtChannelOpenStatus.NoMemory">
+            <summary>
+            Memory allocation failure
+            </summary>
+        </member>
+        <member name="F:nanoFramework.Hardware.Esp32.Rmt.RmtChannelOpenStatus.InvalidArgument">
+            <summary>
+            Parameter error
+            </summary>
+        </member>
+        <member name="F:nanoFramework.Hardware.Esp32.Rmt.RmtChannelOpenStatus.ChannelOpened">
+            <summary>
+            Channel has been sucessfully opened.
+            </summary>
+        </member>
+        <member name="P:nanoFramework.Hardware.Esp32.Rmt.Helpers.ProntoCode.Frequency">
+            <summary>
+            The frequency of the carrier wave in KiloHertz
+            </summary>       
+        </member>
+        <member name="P:nanoFramework.Hardware.Esp32.Rmt.Helpers.ProntoCode.CodeSequence">
+            <summary>
+            The sequence of burst pairs when the code is sent once.
+            </summary>
+            <remarks>
+            An even index is the first segment of a brst pair, and is the 
+            length of time in microseconds the IR emitter is turned on. 
+            An odd index is the length of time in microseconds the emitter is off.
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.Hardware.Esp32.Rmt.Helpers.ProntoCode.CodeSequenceBurstPairs">
+            <summary>
+            The number of burst pairs in <c>CodeSequence</c>.
+            </summary>        
+        </member>
+        <member name="P:nanoFramework.Hardware.Esp32.Rmt.Helpers.ProntoCode.RepeatSequence">
+            <summary>
+            The sequence of burst pairs when the code is repeated.
+            </summary>
+            <remarks>
+            An even index is the first segment of a brst pair, and is the 
+            length of time in microseconds the IR emitter is turned on. 
+            An odd index is the length of time in microseconds the emitter is off.
+            </remarks>
+        </member>
+        <member name="P:nanoFramework.Hardware.Esp32.Rmt.Helpers.ProntoCode.RepeatSequenceBurstPairs">
+            <summary>
+            The number of burst pairs in <c>RepeatSequence</c>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:nanoFramework.Hardware.Esp32.Rmt.Helpers.ProntoCode.Type">
+            <summary>
+            The type of the Pronto code. A value of 0 means the code is Learned
+            </summary>        
+        </member>
+    </members>
+</doc>

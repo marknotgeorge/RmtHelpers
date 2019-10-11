@@ -5,19 +5,24 @@ using nanoFramework.Hardware.Esp32.Rmt;
 
 namespace nanoFramework.Hardware.Esp32.Rmt.Helpers
 {
+    /// <summary>
+    /// A class of helper functions for the nanoFramework.Hardware.Esp32.Rmt library.
+    /// </summary>
     public static class RmtHelpers
     {
-        public static RmtItem[] Pronto2RmtItems(string code, int repeats = 1, byte clockDivider = 80)
+        /// <summary>
+        /// Creates an array of RmtItems from a Pronto code.
+        /// </summary>
+        /// <param name="code">A string containing the Pronto code</param>        
+        /// <param name="sequence">The code sequence to return. Defaults to <c>Once</c>.</param>
+        /// <param name="clockDivider">The RMT clock divider, used to determine the number of RMT ticks per microsecond. Defaults to 80.</param>
+        /// <returns></returns>
+        public static RmtItem[] Pronto2RmtItems(string code, CodeSequence sequence = CodeSequence.Once, byte clockDivider = 80)
         {            
             if (string.IsNullOrEmpty(code))
             {
                 throw new ArgumentNullException("code");
-            }
-
-            if (repeats < 1)
-            {
-                throw new ArgumentOutOfRangeException("repeats", "Must be at least 1.");
-            }
+            }            
             
             int clockFrequency = 80_000_000;
             
@@ -26,46 +31,39 @@ namespace nanoFramework.Hardware.Esp32.Rmt.Helpers
 
             var pronto = new ProntoCode(code);
 
-            var itemList = new ArrayList();            
-            if (pronto.CodeSequenceBurstPairs > 0)
-            {
-                for (var i = 0; i < ((pronto.CodeSequenceBurstPairs * 2) - 1); i = i + 2)
-                {
-                    var highBurst = pronto.CodeSequence[i] / ticksPerMicroSecond;
-                    var lowBurst = pronto.CodeSequence[i+1] / ticksPerMicroSecond;
+            RmtItem[] returnArray = null;
 
-                    var newItem = CreateBurstPair((UInt16)highBurst, (UInt16)lowBurst);
-                    itemList.Add(newItem);
-                }
-            }
-            else if (pronto.RepeatSequenceBurstPairs > 0)
+            switch (sequence)
             {
-                for (var i = 0; i < ((pronto.RepeatSequenceBurstPairs * 2) - 1); i = i + 2)
-                {
-                    var highBurst = pronto.RepeatSequence[i] / ticksPerMicroSecond;
-                    var lowBurst = pronto.RepeatSequence[i+1] / ticksPerMicroSecond;
-
-                    var newItem = CreateBurstPair((UInt16)highBurst, (UInt16)lowBurst);
-                    itemList.Add(newItem);
-                }
+                case CodeSequence.Once:
+                    returnArray =  getRmtItems(pronto.OnceSequenceBurstPairs, pronto.OnceSequence, ticksPerMicroSecond);
+                    break;
+                case CodeSequence.Repeat:
+                    returnArray =  getRmtItems(pronto.RepeatSequenceBurstPairs, pronto.RepeatSequence, ticksPerMicroSecond);
+                    break;                
             }
 
-            if (repeats > 1 )
-            {
-                for (var k = 1; k < repeats; k++)
-                {
-                    for (var i = 0; i < ((pronto.RepeatSequenceBurstPairs * 2) - 1); i = i + 2)
-                    {
-                        var highBurst = pronto.RepeatSequence[i] / ticksPerMicroSecond;
-                        var lowBurst = pronto.RepeatSequence[i+1] / ticksPerMicroSecond;
+            return returnArray;                
+        }
 
-                        var newItem = CreateBurstPair((UInt16)highBurst, (UInt16)lowBurst);
-                        itemList.Add(newItem);
-                    }
-                }
+           
+
+            
+        
+
+        private static RmtItem[] getRmtItems(int burstPairCount, int[] burstPairArray, int ticksPerMicroSecond)
+        {
+            var itemList = new ArrayList();
+            for (var i = 0; i < ((burstPairCount * 2) - 1); i = i + 2)
+            {
+                var highBurst = burstPairArray[i] / ticksPerMicroSecond;
+                var lowBurst = burstPairArray[i+1] / ticksPerMicroSecond;
+
+                var newItem = CreateBurstPair((UInt16)highBurst, (UInt16)lowBurst);
+                itemList.Add(newItem);
             }
 
-            var itemArray = new RmtItem[itemList.Count];
+                var itemArray = new RmtItem[itemList.Count];
 
             for (var i = 0; i < itemList.Count; i++)
             {
@@ -75,7 +73,20 @@ namespace nanoFramework.Hardware.Esp32.Rmt.Helpers
             return itemArray;
         }
 
-
+        /// <summary>
+        /// The code sequence to return.
+        /// </summary>
+        public enum CodeSequence
+        {
+            /// <summary>
+            /// The code to send when the code is sent once, or the first code when the code is sent repeatedly.
+            /// </summary>
+            Once,
+            /// <summary>
+            /// The code to send after <c>Once</c> when the code is sent repeatedly.
+            /// </summary>            
+            Repeat
+        }
 
         public static RmtItem CreateBurstPair(UInt16 highDuration, UInt16 lowDuration, bool highFirst=true)
         {
