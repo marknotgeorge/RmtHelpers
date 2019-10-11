@@ -1,0 +1,11 @@
+C:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\bin\Debug\netcoreapp2.2\ProntoToRmtItem.deps.json
+C:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\bin\Debug\netcoreapp2.2\ProntoToRmtItem.runtimeconfig.json
+C:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\bin\Debug\netcoreapp2.2\ProntoToRmtItem.runtimeconfig.dev.json
+c:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\bin\Debug\netcoreapp2.2\ProntoToRmtItem.dll
+c:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\bin\Debug\netcoreapp2.2\ProntoToRmtItem.pdb
+c:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\obj\Debug\netcoreapp2.2\ProntoToRmtItem.csprojAssemblyReference.cache
+c:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\obj\Debug\netcoreapp2.2\ProntoToRmtItem.csproj.CoreCompileInputs.cache
+c:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\obj\Debug\netcoreapp2.2\ProntoToRmtItem.AssemblyInfoInputs.cache
+c:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\obj\Debug\netcoreapp2.2\ProntoToRmtItem.AssemblyInfo.cs
+c:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\obj\Debug\netcoreapp2.2\ProntoToRmtItem.dll
+c:\Users\Johnson\Documents\MyCode\ProntoToRmtItem\obj\Debug\netcoreapp2.2\ProntoToRmtItem.pdb
